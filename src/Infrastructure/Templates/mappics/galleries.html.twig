@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}Galleries{% endblock %}
+
+{% block body %}
+
+    <h3>Galleries</h3>
+
+    <div id="mapid" data-coordinates="{{ dataArray|json_encode }}" data-mapboxapikey="{{ mapboxApiKey }}"></div>
+
+{% endblock %}
+
+{% block js_custom %}
+    <script src="{{ asset('js/galleriesMap.js') }}"></script>
+{% endblock %}

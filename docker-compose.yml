@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  mappics:
+    working_dir: /var/www/mappics
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - .:/var/www/mappics

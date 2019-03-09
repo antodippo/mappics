@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}About{% endblock %}
+
+{% block body %}
+
+    <h3>About</h3>
+
+    <div>
+        <p>Mappics is a <strong>map based</strong> travel photos gallery, with automatic <strong>place</strong> and <strong>weather description</strong>
+            of the very moment the photos are taken. </p>
+
+        <p>It will process all the images placed in a specific directory and perform these operations:</p>
+
+        <ul>
+            <li>it fetches <strong><a href="https://en.wikipedia.org/wiki/Exif" target="_blank">Exif data</a></strong>, which usually contain camera model and settings,
+                GPS information, and date and time the photo was taken</li>
+
+            <li>it fetches <strong>place description</strong>. A short one (like <code>Goðafoss Waterfall</code> and a long one (like
+                <code>Goðafoss Waterfall, Goðafossvegur, Öxará, Þingeyjarsveit, Norðurland eystra, Ísland</code>). This is based on the Exif GPS
+                information stored in the photo and obtained from <a href="https://nominatim.openstreetmap.org/">Nominatim and OpenStreetMap APIs</a></li>
+
+            <li>it fetches <strong>weather forecast</strong> in the place and moment the photo was taken. This is based on the Exif GPS information and
+                the creation date of the photo, and obtained from the <a href="https://darksky.net/dev">DarkSky APIs</a></li>
+
+            <li>it creates a <strong>resized version</strong> of the image and a <strong>thumbnail</strong>, and store them in a different folder from
+                the original one</li>
+        </ul>
+
+        <p>All these information are shown in galleries and pop up with photos and details, using <a href="https://leafletjs.com/">Leaflet</a> javascript
+            library and <a href="https://www.mapbox.com/">Mapbox</a> maps. Frontend is based on <a href="https://getbootstrap.com">Bootstrap</a> framework
+            and backend is written in PHP on top of some <a href="https://symfony.com/">Symfony</a> components.</p>
+
+        <p>This project is made (with love for traveling) by <a target="_blank" href="http://antodippo.com">Antonello D'Ippolito</a>,
+            but you can contribute at this project, or use it by yourself. <br/>
+            Code and more info at <i class="fab fa-github"></i>
+            <a target="_blank" href="https://github.com/antodippo/mappics">https://github.com/antodippo/mappics</a>.</p>
+    </div>
+
+{% endblock %}

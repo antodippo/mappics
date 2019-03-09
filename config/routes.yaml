@@ -1,0 +1,20 @@
+
+galleries:
+    path: /
+    controller: App\Infrastructure\Controller\MappicsController::galleries
+
+gallery:
+    path:      /galleries/{gallerySlug}
+    controller: App\Infrastructure\Controller\MappicsController::gallery
+
+world_photo_map:
+    path:      /worldmap
+    controller: App\Infrastructure\Controller\MappicsController::worldmap
+
+imageModal:
+    path:      /images/{imageId}
+    controller: App\Infrastructure\Controller\MappicsController::imageModal
+
+about:
+    path:      /about
+    controller: App\Infrastructure\Controller\MappicsController::about

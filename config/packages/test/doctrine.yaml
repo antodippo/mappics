@@ -1,0 +1,6 @@
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        host: localhost
+        charset: utf8mb4
+        url: '%env(resolve:DATABASE_URL)%'

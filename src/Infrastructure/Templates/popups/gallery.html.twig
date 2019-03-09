@@ -1,0 +1,16 @@
+
+<div class="gallery-popup">
+    <div class="gallery-popup-info">
+        <b>{{ gallery.name }}</b><br/>
+        # of photos: {{ gallery.images|length }}<br/>
+        <a href="galleries/{{ gallery.slug }}">
+            <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+            galleries/{{ gallery.slug }}
+        </a>
+    </div>
+    <div class="gallery-popup-image">
+        <a href="galleries/{{ gallery.slug }}">
+            <img src="/galleries/{% if gallery.frontImage is not null %}{{ gallery.frontImage.thumbnailFilename }}{% endif %}" />
+        </a>
+    </div>
+</div>

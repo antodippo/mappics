@@ -1,0 +1,13 @@
+parameters:
+    galleries_path: '%kernel.project_dir%/tests/Infrastructure/Console/DataFixtures/galleries'
+    public_galleries_path: '%kernel.project_dir%/tests/Infrastructure/Console/DataFixtures/public/galleries'
+
+services:
+    _defaults:
+        public: true
+
+    App\Tests\Infrastructure\Service\StubGeoInfoRetriever: ~
+    App\Tests\Infrastructure\Service\StubWeatherRetriever: ~
+
+    App\Application\Service\GeoInfoRetriever: '@App\Tests\Infrastructure\Service\StubGeoInfoRetriever'
+    App\Application\Service\WeatherRetriever: '@App\Tests\Infrastructure\Service\StubWeatherRetriever'

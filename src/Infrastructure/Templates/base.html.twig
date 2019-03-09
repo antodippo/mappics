@@ -1,0 +1,98 @@
+<html>
+
+    <head>
+
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}Mappics - {% block subtitle %}{% endblock %}{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+                  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+                  crossorigin=""/>
+            <link rel="stylesheet" href="{{ asset('css/mappics.css') }}" />
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+                  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        {% endblock %}
+
+
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link rel="icon" type="image/x-icon" href="" />
+
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+                integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+                crossorigin=""></script>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('galleries') }}">
+                        <img id="logo" src="{{ asset('images/logo.png') }}">
+                    </a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-images"></i> Galleries <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="drop1">
+                                {% for gallery in galleries %}
+                                    <li>
+                                        <a href="{{ path('gallery', { 'gallerySlug': gallery.slug }) }}">
+                                            <i class="far fa-images"></i> {{ gallery.name }} ({{ gallery.images|length }})
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('world_photo_map') }}"><i class="fas fa-globe-africa"></i> World map</a></li>
+                        <li><a href="{{ path('about') }}"><i class="fas fa-info-circle"></i> About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <br/><br/><br/>
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <hr />
+                <p class="text-muted">
+                    <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+                    </a>
+                    <br />Except where otherwise noted, content on this site is licensed under a
+                    <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+                    <br />Mappics - <a href="http://antodippo.com" target="_blank">Antonello D'Ippolito</a> - {{ "now"|date("Y") }}
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        {% block js_custom %}{% endblock js_custom %}
+
+    </body>
+
+</html>

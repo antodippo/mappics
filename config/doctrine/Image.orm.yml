@@ -1,0 +1,40 @@
+App\Domain\Entity\Image:
+    type: entity
+    table: image
+    id:
+        id:
+            type: string
+            generator: { strategy: NONE }
+    fields:
+        filename:
+            type: string
+            nullable: false
+        resizedFilename:
+            type: string
+            nullable: true
+        thumbnailFilename:
+            type: string
+            nullable: true
+        description:
+            type: string
+            nullable: true
+        longDescription:
+            type: string
+            nullable: true
+        createdAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+    embedded:
+        exifData:
+            class: App\Domain\Entity\ExifData
+        weather:
+            class: App\Domain\Entity\Weather
+    manyToOne:
+        gallery:
+            targetEntity: App\Domain\Entity\Gallery
+            inversedBy: images
+            joinColumn:
+                name: gallery_id
+                referencedColumnName: id

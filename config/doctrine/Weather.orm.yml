@@ -1,0 +1,18 @@
+App\Domain\Entity\Weather:
+    type: embeddable
+    fields:
+       description:
+           type: string
+           nullable: true
+       temperature:
+           type: string
+           nullable: true
+       humidity:
+           type: string
+           nullable: true
+       pressure:
+           type: string
+           nullable: true
+       windSpeed:
+           type: string
+           nullable: true

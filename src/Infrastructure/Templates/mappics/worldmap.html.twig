@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}World map{% endblock %}
+
+{% block body %}
+
+    <h3>World map</h3>
+
+    <div id="worldmap" data-coordinates="{{ dataArray|json_encode }}" data-mapboxapikey="{{ mapboxApiKey }}"></div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_custom %}
+    <script src="{{ asset('js/worldMap.js') }}"></script>
+    <script src="{{ asset('js/imageModal.js') }}"></script>
+{% endblock %}

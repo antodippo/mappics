@@ -1,0 +1,80 @@
+parameters:
+    galleries_path: '%kernel.project_dir%/var/galleries'
+    public_galleries_path: '%kernel.project_dir%/public/galleries'
+    image_files_extensions:
+        - jpg
+        - png
+    dark_sky_api_key: '%env(DARK_SKY_API_KEY)%'
+    mapbox_api_key: '%env(MAPBOX_API_KEY)%'
+    locale: 'en'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+
+    App\Infrastructure\Controller\MappicsController:
+        arguments:
+            $mapboxApiKey: '%mapbox_api_key%'
+        tags: ['controller.service_arguments']
+
+    App\Infrastructure\Repository\DoctrineGalleryRepository:
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+
+    App\Domain\Repository\GalleryRepository: '@App\Infrastructure\Repository\DoctrineGalleryRepository'
+
+    App\Infrastructure\Repository\DoctrineImageRepository:
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+
+    App\Domain\Repository\ImageRepository: '@App\Infrastructure\Repository\DoctrineImageRepository'
+
+    App\Infrastructure\Service\DarkSkyWeatherRetriever:
+        arguments:
+            $apiKey: '%dark_sky_api_key%'
+
+    App\Application\Service\GeoInfoRetriever: '@App\Infrastructure\Service\OSMGeoInfoRetriever'
+    App\Application\Service\WeatherRetriever: '@App\Infrastructure\Service\DarkSkyWeatherRetriever'
+    App\Application\Service\ImageResizer: '@App\Infrastructure\Service\GumletImageResizer'
+
+    App\Infrastructure\Service\NetteFileFinder:
+        arguments:
+            $galleriesPath: '%galleries_path%'
+            $imageFilesExtensions: '%image_files_extensions%'
+
+    App\Infrastructure\Service\GumletImageResizer:
+        arguments:
+            $galleriesPath: '%galleries_path%'
+            $publicGalleriesPath: '%public_galleries_path%'
+
+    GuzzleHttp\Client: ~
+    GuzzleHttp\ClientInterface: '@GuzzleHttp\Client'
+
+    Symfony\Component\Console\Style\SymfonyStyle: ~
+
+    # Command handlers
+
+    App\Application\CommandHandler\ProcessGalleryHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }
+
+    App\Application\CommandHandler\ProcessImageHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }
+
+    App\Application\CommandHandler\RetrieveImageGeoDescriptionHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }
+
+    App\Application\CommandHandler\RetrieveImageWeatherHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }
+
+    App\Application\CommandHandler\ResizeImageHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }

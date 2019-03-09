@@ -1,0 +1,33 @@
+App\Domain\Entity\ExifData:
+    type: embeddable
+    fields:
+        latitude:
+            type: string
+            nullable: true
+        longitude:
+            type: string
+            nullable: true
+        altitude:
+            type: string
+            nullable: true
+        make:
+            type: string
+            nullable: true
+        model:
+            type: string
+            nullable: true
+        exposure:
+            type: string
+            nullable: true
+        aperture:
+            type: string
+            nullable: true
+        focalLength:
+            type: string
+            nullable: true
+        ISO:
+            type: string
+            nullable: true
+        takenAt:
+            type: datetime
+            nullable: true

@@ -1,0 +1,144 @@
+
+#mapid {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    height: 700px;
+    width: 100%;
+}
+
+#worldmap {
+    margin-left: auto;
+    margin-right: auto;
+    height: 700px;
+    width: 100%;
+}
+
+#imageMap {
+    height: 200px;
+    width: 100%;
+}
+
+#logo {
+    margin-top: -13px;
+    max-height: 50px;
+}
+
+.navbar .nav>li>a {
+    font-size: 14px;
+}
+
+.dropdown-menu>li>a {
+    font-size: 14px;
+}
+
+.dropdown-menu{
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.gallery-thumbnail {
+    max-height: 150px;
+}
+
+.thumbnail {
+    border-radius: 0px;
+}
+
+.image-long-description {
+    font-size: 12px;
+}
+
+.fas, .far {
+    width: 20px;
+    text-align: center;
+}
+
+.modal .fas, .modal .far {
+    color: black;
+}
+
+.modal {
+    margin: auto;
+    text-align: center;
+    padding: 0!important;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    width: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.img-modal {
+    margin-right: auto;
+    margin-left: auto;
+    max-height: 800px;
+}
+
+hr {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.gallery-popup {
+    width:300px; height:60px;
+}
+
+.gallery-popup-info {
+    width:190px;
+    height:50px;
+    margin:4px;
+    float:right;
+}
+
+.gallery-popup-image {
+    width:90px;
+    height:50px;
+    margin:4px;
+    float:right;
+}
+
+.gallery-popup-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-popup {
+    width:300px;
+    height:100px;
+}
+
+.image-popup-info {
+    width:190px;
+    height:90px;
+    margin:4px;
+    float:right;
+}
+
+.image-popup-image {
+    width:90px;
+    height:90px;
+    margin:4px;
+    float:right;
+}
+
+.image-popup-image img {
+    max-width: 100%;
+    max-height: 100%;
+}

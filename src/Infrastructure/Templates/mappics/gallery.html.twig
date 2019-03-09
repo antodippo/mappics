@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}{{ gallery.name }}{% endblock %}
+
+{% block body %}
+
+    <h3>{{ gallery.name }}</h3>
+
+    <div id="mapid" data-coordinates="{{ dataArray|json_encode }}" data-mapboxapikey="{{ mapboxApiKey }}"></div>
+
+    <div class="row">
+        <div class='list-group gallery'>
+            {% for image in gallery.images %}
+
+                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                    <a class="thumbnail fancybox" rel="ligthbox" href="#" data-toggle="modal"
+                       data-target="#imageModal" data-image-modal-url="{{ path('imageModal', { 'imageId': image.id }) }}">
+                        <img class="img-responsive gallery-thumbnail" alt="" src="/galleries/{{ image.thumbnailFilename }}" />
+                        <div class='text-right'>
+                            <small class='text-muted'>{{ image.description }}</small>
+                        </div>
+                    </a>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_custom %}
+    <script src="{{ asset('js/galleryMap.js') }}"></script>
+    <script src="{{ asset('js/imageModal.js') }}"></script>
+{% endblock %}

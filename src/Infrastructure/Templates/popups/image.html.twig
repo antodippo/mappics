@@ -1,0 +1,18 @@
+
+<div class="image-popup">
+    <div class="image-popup-info">
+        <b>{{ image.description }}</b><br/>
+        {{ image.longDescription|truncate(55) }}<br/>
+        {% if image.exifData.takenAt is not null %}
+            <i class="far fa-calendar"></i>
+            {{ image.exifData.takenAt|date("l, d/m/y H.i") }}<br/>
+        {% endif %}
+        <i class="fas fa-map-marked-alt"></i>
+        {{ image.exifData.latitude|number_format(5) }}, {{ image.exifData.longitude|number_format(5) }}<br/>
+    </div>
+    <div class="image-popup-image">
+        <a href="#" data-toggle="modal" data-target="#imageModal" data-image-modal-url="{{ path('imageModal', { 'imageId': image.id }) }}">
+            <img src="/galleries/{% if image.thumbnailFilename is not null %}{{ image.thumbnailFilename }}{% endif %}" />
+        </a>
+    </div>
+</div>

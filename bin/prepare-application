@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-compose run --rm mappics composer install
+docker-compose run --rm mappics bin/console doctrine:migrations:migrate --env=dev --no-interaction

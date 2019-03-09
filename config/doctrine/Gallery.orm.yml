@@ -1,0 +1,26 @@
+App\Domain\Entity\Gallery:
+    type: entity
+    table: gallery
+    id:
+        id:
+            type: string
+            generator: { strategy: NONE }
+    fields:
+        path:
+            type: string
+            nullable: false
+        name:
+            type: string
+            nullable: false
+        slug:
+            type: string
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+    oneToMany:
+        images:
+            targetEntity: App\Domain\Entity\Image
+            mappedBy: gallery
