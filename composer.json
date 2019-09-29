@@ -40,6 +40,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "infection/infection": "^0.14.1",
         "php-coveralls/php-coveralls": "^1.0",
         "symfony/profiler-pack": "^1.0"
     },
