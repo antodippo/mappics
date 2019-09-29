@@ -33,7 +33,7 @@ class ResizeImageSubscriberTest extends TestCase
     public function test_getSubscribedEvents()
     {
         $expectedSubscribedEvents = [
-            SfImageProcessed::NAME => 'onProcessImage',
+            SfImageProcessed::class => 'onProcessImage',
         ];
         $subscribedEvents = ResizeImageSubscriber::getSubscribedEvents();
         $this->assertEquals($expectedSubscribedEvents, $subscribedEvents);

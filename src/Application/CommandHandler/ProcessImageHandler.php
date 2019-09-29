@@ -87,6 +87,6 @@ class ProcessImageHandler
         }
 
         $imageProcessed = new SfImageProcessed($image);
-        $this->eventDispatcher->dispatch(SfImageProcessed::NAME, $imageProcessed);
+        $this->eventDispatcher->dispatch($imageProcessed);
     }
 }

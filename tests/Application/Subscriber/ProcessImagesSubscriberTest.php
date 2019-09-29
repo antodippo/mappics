@@ -31,7 +31,7 @@ class ProcessImagesSubscriberTest extends TestCase
     public function test_it_gets_subscribed_events()
     {
         $subscribedEvents = [
-            'gallery.processed' => 'processGalleryImages'
+            SfGalleryProcessed::class => 'processGalleryImages'
         ];
         $this->assertEquals($subscribedEvents, ProcessImagesSubscriber::getSubscribedEvents());
     }

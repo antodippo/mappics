@@ -31,7 +31,7 @@ class ProcessImagesSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            SfGalleryProcessed::NAME => 'processGalleryImages',
+            SfGalleryProcessed::class => 'processGalleryImages',
         ];
     }
 

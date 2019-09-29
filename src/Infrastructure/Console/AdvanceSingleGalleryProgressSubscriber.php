@@ -19,7 +19,7 @@ class AdvanceSingleGalleryProgressSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            SfImageProcessed::NAME => 'advanceSingleGalleryProgress',
+            SfImageProcessed::class => 'advanceSingleGalleryProgress',
         ];
     }
 

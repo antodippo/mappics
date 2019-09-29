@@ -39,7 +39,7 @@ class WeatherSubscriberTest extends TestCase
     public function test_getSubscribedEvents()
     {
         $expectedSubscribedEvents = [
-            SfImageProcessed::NAME => 'onProcessImage',
+            SfImageProcessed::class => 'onProcessImage',
         ];
         $subscribedEvents = WeatherSubscriber::getSubscribedEvents();
         $this->assertEquals($expectedSubscribedEvents, $subscribedEvents);

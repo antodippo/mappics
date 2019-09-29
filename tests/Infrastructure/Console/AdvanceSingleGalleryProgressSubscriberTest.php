@@ -15,7 +15,7 @@ class AdvanceSingleGalleryProgressSubscriberTest extends TestCase
     public function test_getSubscribedEvents()
     {
         $expectedSubscribedEvents = [
-            SfImageProcessed::NAME => 'advanceSingleGalleryProgress',
+            SfImageProcessed::class => 'advanceSingleGalleryProgress',
         ];
         $subscribedEvents = AdvanceSingleGalleryProgressSubscriber::getSubscribedEvents();
         $this->assertEquals($expectedSubscribedEvents, $subscribedEvents);

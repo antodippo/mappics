@@ -38,7 +38,7 @@ class GeoInfoSubscriberTest extends TestCase
     public function test_getSubscribedEvents()
     {
         $expectedSubscribedEvents = [
-            SfImageProcessed::NAME => 'onProcessImage',
+            SfImageProcessed::class => 'onProcessImage',
         ];
         $subscribedEvents = GeoInfoSubscriber::getSubscribedEvents();
         $this->assertEquals($expectedSubscribedEvents, $subscribedEvents);

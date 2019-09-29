@@ -69,6 +69,6 @@ class ProcessGalleryHandler
         }
 
         $galleryProcessed = new SfGalleryProcessed($persistedGallery);
-        $this->eventDispatcher->dispatch(SfGalleryProcessed::NAME, $galleryProcessed);
+        $this->eventDispatcher->dispatch($galleryProcessed);
     }
 }
