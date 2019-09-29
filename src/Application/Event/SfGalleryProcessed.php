@@ -5,12 +5,10 @@ namespace App\Application\Event;
 
 use App\Domain\Entity\Gallery;
 use App\Domain\Event\GalleryProcessed;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class SfGalleryProcessed extends Event implements GalleryProcessed
 {
-    const NAME = 'gallery.processed';
-
     /** @var Gallery */
     private $gallery;
 

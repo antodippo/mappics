@@ -5,12 +5,10 @@ namespace App\Application\Event;
 
 use App\Domain\Entity\Image;
 use App\Domain\Event\ImageProcessed;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class SfImageProcessed extends Event implements ImageProcessed
 {
-    const NAME = 'image.processed';
-
     /**
      * @var Image
      */

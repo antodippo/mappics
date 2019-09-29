@@ -76,7 +76,7 @@ class ProcessImageHandlerTest extends TestCase
         );
 
         \Phake::verify($this->imageRepository, \Phake::times(1))->add($image);
-        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(SfImageProcessed::NAME, new SfImageProcessed($image));
+        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(new SfImageProcessed($image));
     }
 
     public function test_it_raises_event_for_already_persisted_image()
@@ -102,7 +102,7 @@ class ProcessImageHandlerTest extends TestCase
         $processImageHandler->handle($command);
 
         \Phake::verify($this->imageRepository, \Phake::times(0))->add($image);
-        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(SfImageProcessed::NAME, new SfImageProcessed($image));
+        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(new SfImageProcessed($image));
     }
 
     public function test_it_skip_an_image_without_geo_coordinates()

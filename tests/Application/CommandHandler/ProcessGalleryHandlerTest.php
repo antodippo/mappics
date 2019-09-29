@@ -57,7 +57,7 @@ class ProcessGalleryHandlerTest extends TestCase
         $processGalleryHandler->handle($command);
 
         \Phake::verify($this->galleryRepository)->add($persistedGallery);
-        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(SfGalleryProcessed::NAME, new SfGalleryProcessed($persistedGallery));
+        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(new SfGalleryProcessed($persistedGallery));
     }
 
     public function test_it_raises_event_for_already_persisted_gallery()
@@ -77,6 +77,6 @@ class ProcessGalleryHandlerTest extends TestCase
         );
         $galleryPersister->handle($command);
 
-        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(SfGalleryProcessed::NAME, new SfGalleryProcessed($persistedGallery));
+        \Phake::verify($this->eventDispatcher, \Phake::times(1))->dispatch(new SfGalleryProcessed($persistedGallery));
     }
 }

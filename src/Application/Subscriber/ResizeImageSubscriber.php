@@ -28,7 +28,7 @@ class ResizeImageSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            SfImageProcessed::NAME => 'onProcessImage',
+            SfImageProcessed::class => 'onProcessImage',
         ];
     }
 
