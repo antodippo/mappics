@@ -11,7 +11,7 @@ class NetteFileFinderTest extends TestCase
     /** @var FileFinder */
     private $fileFinder;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->fileFinder = new NetteFileFinder('tests/Infrastructure/Service/DataFixtures/galleries/', ['jpg', 'png']);
     }

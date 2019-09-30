@@ -27,7 +27,7 @@ class MappicsControllerTest extends TestCase
     /** @var MappicsController */
     private $mappicsController;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->galleryRepository = \Phake::mock(GalleryRepository::class);
         $this->imageRepository = \Phake::mock(ImageRepository::class);

@@ -29,7 +29,7 @@ class WeatherSubscriberTest extends TestCase
      */
     private $weatherSubscriber;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->commandBus = \Phake::mock(CommandBus::class);
         $this->logger = \Phake::mock(LoggerInterface::class);

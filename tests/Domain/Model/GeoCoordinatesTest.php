@@ -19,10 +19,10 @@ class GeoCoordinatesTest extends TestCase
 
     /**
      * @dataProvider getLatitudesOutOfRange
-     * @expectedException \InvalidArgumentException
      */
     public function test_itThrowsExeptionForLatitudeOutOfRange($latitude)
     {
+        $this->expectException('\InvalidArgumentException');
         $geoCoordinates = new GeoCoordinates($latitude, 0.0);
     }
 
@@ -36,10 +36,10 @@ class GeoCoordinatesTest extends TestCase
 
     /**
      * @dataProvider getLongitudesOutOfRange
-     * @expectedException \InvalidArgumentException
      */
     public function test_itThrowsExeptionForLongitudesOutOfRange($longitude)
     {
+        $this->expectException('\InvalidArgumentException');
         $geoCoordinates = new GeoCoordinates(0.0, $longitude);
     }
 

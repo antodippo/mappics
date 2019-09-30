@@ -18,7 +18,7 @@ class DarkSkyWeatherRetrieverTest extends TestCase
      */
     private $httpClient;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->httpClient = \Phake::mock(ClientInterface::class);
     }
@@ -70,11 +70,10 @@ class DarkSkyWeatherRetrieverTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\WeatherRetrievingException
-     */
     public function test_retrieveImageWeather_withErrorStatusCode()
     {
+        $this->expectException('\App\Domain\Exception\WeatherRetrievingException');
+
         $exifData = \Phake::mock(ExifData::class);
         \Phake::when($exifData)->getLatitude()->thenReturn('111');
         \Phake::when($exifData)->getLongitude()->thenReturn('222');

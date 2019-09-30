@@ -23,7 +23,7 @@ class ResizeImageSubscriberTest extends TestCase
     /** @var ResizeImageSubscriber */
     private $resizeImageSubscriber;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->commandBus = \Phake::mock(CommandBus::class);
         $this->logger = \Phake::mock(LoggerInterface::class);

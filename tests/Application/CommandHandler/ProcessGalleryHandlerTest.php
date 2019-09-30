@@ -23,7 +23,7 @@ class ProcessGalleryHandlerTest extends TestCase
     private $eventDispatcher;
     private $galleryFileInfo;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->galleryRepository = \Phake::mock(GalleryRepository::class);
         $this->uuidGenerator = \Phake::mock(UuidGenerator::class);

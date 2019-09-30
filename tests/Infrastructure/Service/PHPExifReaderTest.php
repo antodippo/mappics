@@ -42,11 +42,10 @@ class PHPExifReaderTest extends TestCase
         $this->assertEquals($expectedExifData, $exifData);
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\MissingGeoCoordinatesException
-     */
     public function test_itThrowsException_withoutGPSData()
     {
+        $this->expectException('\App\Domain\Exception\MissingGeoCoordinatesException');
+
         Carbon::setTestNow(new \DateTime());
 
         $file = SplFileInfo::fromBaseSplFileInfo(
