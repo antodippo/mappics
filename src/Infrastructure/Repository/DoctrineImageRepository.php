@@ -7,6 +7,7 @@ use App\Domain\Entity\Gallery;
 use App\Domain\Entity\Image;
 use App\Domain\Exception\ImageNotFoundException;
 use App\Domain\Repository\ImageRepository;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -16,7 +17,7 @@ class DoctrineImageRepository implements ImageRepository
     /** @var EntityManager */
     private $em;
 
-    /** @var EntityRepository */
+    /** @var ObjectRepository */
     private $entityRepository;
 
     public function __construct(EntityManager $em)
@@ -28,7 +29,7 @@ class DoctrineImageRepository implements ImageRepository
     public function findById(string $imageId): Image
     {
         $image = $this->entityRepository->find($imageId);
-        if (is_null($image)) {
+        if (! $image instanceof Image) {
             throw new ImageNotFoundException();
         }
 
@@ -38,7 +39,7 @@ class DoctrineImageRepository implements ImageRepository
     public function findByFilenameAndGallery(string $filename, Gallery $gallery): Image
     {
         $image = $this->entityRepository->findOneBy([ 'filename' => $filename, 'gallery' => $gallery ]);
-        if (is_null($image)) {
+        if (! $image instanceof Image) {
             throw new ImageNotFoundException();
         }
 

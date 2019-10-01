@@ -31,7 +31,7 @@ class RetrieveImageGeoDescriptionHandler
         $this->geoInfoRetriever = $geoInfoRetriever;
     }
 
-    public function handle(RetrieveImageGeoDescription $retrieveImageGeoDescription)
+    public function handle(RetrieveImageGeoDescription $retrieveImageGeoDescription): void
     {
         $image = $retrieveImageGeoDescription->getImage();
         $geoDescription = $this->geoInfoRetriever->retrieveImageGeoInfo($image);

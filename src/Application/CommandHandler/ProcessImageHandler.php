@@ -54,11 +54,12 @@ class ProcessImageHandler
         $this->logger = $logger;
     }
 
-    public function handle(ProcessImage $command)
+    public function handle(ProcessImage $command): void
     {
         $imageFileInfo = $command->getImageFileInfo();
         $gallery = $command->getGallery();
 
+        $image = null;
         $newImage = false;
         try {
             $image = $this->imageRepository->findByFilenameAndGallery($imageFileInfo->getFilename(), $gallery);
@@ -86,7 +87,9 @@ class ProcessImageHandler
             }
         }
 
-        $imageProcessed = new SfImageProcessed($image);
-        $this->eventDispatcher->dispatch($imageProcessed);
+        if ($image) {
+            $imageProcessed = new SfImageProcessed($image);
+            $this->eventDispatcher->dispatch($imageProcessed);
+        }
     }
 }

@@ -11,6 +11,7 @@ before_install:
 
 script:
   - mkdir -p build/logs
+  - docker-compose run --rm mappics vendor/bin/phpstan analyse --level=max src/
   - docker-compose run --rm mappics vendor/bin/phpunit --coverage-clover=coverage.xml
   - docker-compose run --rm mappics vendor/bin/infection --min-msi=70 --threads=4
 

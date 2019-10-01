@@ -5,7 +5,7 @@ namespace App\Application\Service;
 
 interface FileFinder
 {
-    public function findGalleries(): iterable;
+    public function findGalleries(): array;
 
-    public function findImagesInPath(string $path): iterable;
+    public function findImagesInPath(string $path): array;
 }

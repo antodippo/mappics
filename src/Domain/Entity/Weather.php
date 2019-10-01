@@ -5,7 +5,7 @@ namespace App\Domain\Entity;
 
 class Weather
 {
-    /** @var string */
+    /** @var string|null */
     private $description;
 
     /** @var float|null */

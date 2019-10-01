@@ -31,7 +31,7 @@ class ResizeImageHandler
         $this->imageResizer = $imageResizer;
     }
 
-    public function handle(ResizeImage $resizeImage)
+    public function handle(ResizeImage $resizeImage): void
     {
         $image = $resizeImage->getImage();
         $image->updateResizedImagesFilename(

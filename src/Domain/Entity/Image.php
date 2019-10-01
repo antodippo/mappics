@@ -54,8 +54,8 @@ class Image
 
     public function updateDescription(GeoDescription $geoDescription): void
     {
-        $this->description = $geoDescription->shortDescription;
-        $this->longDescription = $geoDescription->longDescription;
+        $this->description = (string) $geoDescription->shortDescription;
+        $this->longDescription = (string) $geoDescription->longDescription;
     }
 
     public function recordWeather(Weather $weather): void

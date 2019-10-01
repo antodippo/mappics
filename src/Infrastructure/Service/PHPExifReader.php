@@ -17,7 +17,10 @@ class PHPExifReader implements ExifReader
         $exifReadData = $reader->read($imageFile->getRealPath());
         $exifRawData = $exifReadData->getRawData();
 
-        $gpsCoordinates = explode(',', (string) $exifReadData->getGPS());
+        $gpsCoordinates = $exifReadData->getGPS();
+        if (! is_array($gpsCoordinates)) {
+            $gpsCoordinates = explode(',', (string) $gpsCoordinates);
+        }
         if (count($gpsCoordinates) <= 1) {
             throw new MissingGeoCoordinatesException();
         }
@@ -28,14 +31,14 @@ class PHPExifReader implements ExifReader
         return new ExifData(
             (float) $gpsCoordinates[0],
             (float) $gpsCoordinates[1],
-            (float) $gpsAltitude ? $gpsAltitude[0] / $gpsAltitude[1] : null,
+            $gpsAltitude ? (float) ($gpsAltitude[0] / $gpsAltitude[1]) : null,
             isset($exifRawData['Make']) ? $exifRawData['Make'] : null,
             isset($exifRawData['Model']) ? $exifRawData['Model'] : null,
             (string) $exifReadData->getExposureMilliseconds(),
             (string) $exifReadData->getAperture(),
             (string) $exifReadData->getFocalLength(),
             (string) $exifReadData->getIso(),
-            $exifReadData->getCreationDate() ?: null
+            ($exifReadData->getCreationDate() instanceof \DateTime) ? $exifReadData->getCreationDate() : null
         );
     }
 }

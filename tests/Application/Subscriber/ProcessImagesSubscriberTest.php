@@ -40,12 +40,10 @@ class ProcessImagesSubscriberTest extends TestCase
     {
         $fileFinder = \Phake::mock(FileFinder::class);
         \Phake::when($fileFinder)->findImagesInPath('path/to/gallery')->thenReturn(
-            new ArrayIterator(
-                [
-                    $imageFileInfo1 = \Phake::mock(FileInfo::class),
-                    $imageFileInfo2 = \Phake::mock(FileInfo::class),
-                ]
-            )
+            [
+                $imageFileInfo1 = \Phake::mock(FileInfo::class),
+                $imageFileInfo2 = \Phake::mock(FileInfo::class),
+            ]
         );
 
         $processImageSubscriber = new ProcessImagesSubscriber($fileFinder, $this->commandBus, $this->logger);
@@ -59,12 +57,10 @@ class ProcessImagesSubscriberTest extends TestCase
     {
         $fileFinder = \Phake::mock(FileFinder::class);
         \Phake::when($fileFinder)->findImagesInPath('path/to/gallery')->thenReturn(
-            new ArrayIterator(
-                [
-                    $imageFileInfo1 = \Phake::mock(FileInfo::class),
-                    $imageFileInfo2 = \Phake::mock(FileInfo::class),
-                ]
-            )
+            [
+                $imageFileInfo1 = \Phake::mock(FileInfo::class),
+                $imageFileInfo2 = \Phake::mock(FileInfo::class),
+            ]
         );
 
         $command = new ProcessImage($imageFileInfo1, $this->gallery);

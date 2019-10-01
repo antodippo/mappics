@@ -27,12 +27,14 @@ class DarkSkyWeatherRetriever implements WeatherRetriever
 
     public function retrieveImageWeather(Image $image): Weather
     {
+        $timestamp = $image->getExifData()->getTakenAt() instanceof \DateTime ?
+            $image->getExifData()->getTakenAt()->getTimestamp() : null;
+
         $url = self::DARKSKY_ENDPOINT .
             $this->apiKey . '/' .
             $image->getExifData()->getLatitude() . ',' .
             $image->getExifData()->getLongitude() . ',' .
-            $image->getExifData()->getTakenAt()->getTimestamp() .
-            '?units=si';
+            $timestamp . '?units=si';
 
         $response = $this->client->request('GET', $url);
         $responseBody = json_decode((string) $response->getBody());
