@@ -24,7 +24,7 @@
             <directory>./src/</directory>
             <exclude>
                 <file>src/Kernel.php</file>
-                <directory>src/Infrastructure/Migration/*.php</directory>
+                <directory suffix=".php">src/Infrastructure/Migration/</directory>
             </exclude>
         </whitelist>
     </filter>
