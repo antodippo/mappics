@@ -28,7 +28,7 @@ class GeoInfoSubscriberTest extends TestCase
      */
     private $geoInfoSubscriber;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->commandBus = \Phake::mock(CommandBus::class);
         $this->logger = \Phake::mock(LoggerInterface::class);

@@ -29,11 +29,9 @@
         "symfony/lock": "^4.1",
         "symfony/monolog-bundle": "^3.3",
         "symfony/orm-pack": "^1.0",
-        "symfony/phpunit-bridge": "^4.0",
         "symfony/requirements-checker": "^1.1",
         "symfony/stopwatch": "^4.1",
         "symfony/twig-bundle": "^4.0",
-        "symfony/web-server-bundle": "^4.0",
         "symfony/yaml": "^4.0",
         "twig/extensions": "^1.5",
         "webmozart/assert": "^1.4"
@@ -42,6 +40,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "infection/infection": "^0.14.1",
         "php-coveralls/php-coveralls": "^1.0",
+        "phpunit/phpunit": "^8.3",
         "symfony/profiler-pack": "^1.0"
     },
     "config": {

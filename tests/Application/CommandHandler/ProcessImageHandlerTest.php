@@ -30,7 +30,7 @@ class ProcessImageHandlerTest extends TestCase
     private $gallery;
     private $exifData;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->imageRepository = \Phake::mock(ImageRepository::class);
 

@@ -13,7 +13,7 @@ class GumletImageResizerTest extends TestCase
     /** @var Image */
     private $image;
 
-    public function setUp()
+    public function setUp(): void
     {
         $gallery = \Phake::mock(Gallery::class);
         \Phake::when($gallery)->getName()->thenReturn('Azores');
@@ -34,11 +34,9 @@ class GumletImageResizerTest extends TestCase
         $this->assertFileExists($publicGalleriesPath . '/' . $resizedPath);
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\ImageResizingException
-     */
     public function test_itThrowsExeptionWhenResizing()
     {
+        $this->expectException('\App\Domain\Exception\ImageResizingException');
         $publicGalleriesPath = 'tests/Infrastructure/Service/DataFixtures/public/galleries';
         $gumletImageResizer = new GumletImageResizer('wrong/path', $publicGalleriesPath);
         $gumletImageResizer->resize($this->image);
@@ -55,17 +53,15 @@ class GumletImageResizerTest extends TestCase
         $this->assertFileExists($publicGalleriesPath . '/' . $thumbnailPath);
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\ImageResizingException
-     */
     public function test_itThrowsExeptionWhenCreatingThumbanail()
     {
+        $this->expectException('\App\Domain\Exception\ImageResizingException');
         $publicGalleriesPath = 'tests/Infrastructure/Service/DataFixtures/public/galleries';
         $gumletImageResizer = new GumletImageResizer('wrong/path', $publicGalleriesPath);
         $gumletImageResizer->createThumbnail($this->image);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         @unlink(__DIR__ . '/DataFixtures/public/galleries/Azores/resized/DSC_0892.JPG');
         @unlink(__DIR__ . '/DataFixtures/public/galleries/Azores/thumbnail/DSC_0892.JPG');

@@ -93,4 +93,33 @@ class GalleryTest extends TestCase
 
         Carbon::setTestNow();
     }
+
+    public function test_itReturnsCorrectValues()
+    {
+        $gallery = new Gallery('fake-id', 'fake/path', 'Fake Gallery', 'fake-gallery');
+
+        $this->assertEquals('fake-id', $gallery->getId());
+        $this->assertEquals('fake/path', $gallery->getPath());
+        $this->assertEquals('Fake Gallery', $gallery->getName());
+        $this->assertEquals('fake-gallery', $gallery->getSlug());
+    }
+
+    public function test_itGetsFrontImage()
+    {
+        $gallery = new Gallery('fake-id', 'fake/path', 'Fake Gallery', 'fake-gallery');
+
+        $this->assertNull($gallery->getFrontImage());
+
+        $exifData = new ExifData(0.0, 0.0, null, null, null, null, null, null, null, null);
+        $imageAAA = new Image('AAA', 'AAA.JPG', $gallery, $exifData);
+        $imageBBB = new Image('BBB', 'BBB.JPG', $gallery, $exifData);
+        $imageCCC = new Image('CCC', 'CCC.JPG', $gallery, $exifData);
+
+        $gallery->addImage($imageBBB);
+        $gallery->addImage($imageCCC);
+        $gallery->addImage($imageAAA);
+
+        $this->assertInstanceOf(Image::class, $gallery->getFrontImage());
+    }
+
 }

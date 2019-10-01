@@ -18,7 +18,7 @@ class ResizeImageHandlerTest extends TestCase
     /** @var ImageResizer */
     private $imageResizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->imageRepository = \Phake::mock(ImageRepository::class);
         $this->imageResizer = \Phake::mock(ImageResizer::class);

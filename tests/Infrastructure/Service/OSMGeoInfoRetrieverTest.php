@@ -19,7 +19,7 @@ class OSMGeoInfoRetrieverTest extends TestCase
      */
     private $httpClient;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->httpClient = \Phake::mock(ClientInterface::class);
     }
@@ -102,11 +102,10 @@ class OSMGeoInfoRetrieverTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\GeoInfoRetrievingException
-     */
     public function test_retrieveImageGeoInfo_withErrorStatusCode()
     {
+        $this->expectException('\App\Domain\Exception\GeoInfoRetrievingException');
+
         $exifData = \Phake::mock(ExifData::class);
         \Phake::when($exifData)->getLatitude()->thenReturn('111');
         \Phake::when($exifData)->getLongitude()->thenReturn('222');
@@ -129,12 +128,11 @@ class OSMGeoInfoRetrieverTest extends TestCase
             ->request('GET', 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=111&lon=222');
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\GeoInfoRetrievingException
-     * @expectedExceptionMessage Fake error description
-     */
     public function test_retrieveImageGeoInfo_withErrorBody()
     {
+        $this->expectException('\App\Domain\Exception\GeoInfoRetrievingException');
+        $this->expectExceptionMessage('Fake error description');
+
         $exifData = \Phake::mock(ExifData::class);
         \Phake::when($exifData)->getLatitude()->thenReturn('111');
         \Phake::when($exifData)->getLongitude()->thenReturn('222');
@@ -163,12 +161,11 @@ class OSMGeoInfoRetrieverTest extends TestCase
             ->request('GET', 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=111&lon=222');
     }
 
-    /**
-     * @expectedException \App\Domain\Exception\GeoInfoRetrievingException
-     * @expectedExceptionMessage Missing Exif geo coordinates
-     */
     public function test_retrieveImageGeoInfo_withoutGeoData()
     {
+        $this->expectException('\App\Domain\Exception\GeoInfoRetrievingException');
+        $this->expectExceptionMessage('Missing Exif geo coordinates');
+
         $image = \Phake::mock(Image::class);
         \Phake::when($image)->hasExifGeoCoordinates()->thenReturn(false);
 

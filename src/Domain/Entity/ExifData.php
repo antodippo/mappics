@@ -84,26 +84,6 @@ class ExifData
         return $this->model;
     }
 
-    public function getExposure(): ?string
-    {
-        return $this->exposure;
-    }
-
-    public function getAperture(): ?string
-    {
-        return $this->aperture;
-    }
-
-    public function getFocalLength(): ?string
-    {
-        return $this->focalLength;
-    }
-
-    public function getISO(): ?string
-    {
-        return $this->ISO;
-    }
-
     public function getTakenAt(): ?\DateTime
     {
         return $this->takenAt;

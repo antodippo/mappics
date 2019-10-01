@@ -22,7 +22,7 @@ class RetrieveImageWeatherHandlerTest extends TestCase
      */
     private $weatherRetriever;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->imageRepository = \Phake::mock(ImageRepository::class);
         $this->weatherRetriever = \Phake::mock(WeatherRetriever::class);

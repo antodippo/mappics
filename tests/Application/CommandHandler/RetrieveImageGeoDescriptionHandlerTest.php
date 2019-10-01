@@ -23,7 +23,7 @@ class RetrieveImageGeoDescriptionHandlerTest extends TestCase
      */
     private $geoInfoRetriever;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->imageRepository = \Phake::mock(ImageRepository::class);
         $this->geoInfoRetriever = \Phake::mock(GeoInfoRetriever::class);

@@ -3,4 +3,4 @@
 docker-compose run --rm mappics composer install
 docker-compose run --rm mappics bin/console cache:clear --env=test
 docker-compose run --rm mappics bin/console doctrine:migrations:migrate --env=test --no-interaction
-docker-compose run --rm mappics vendor/bin/phpunit
+docker-compose run --rm mappics vendor/bin/infection

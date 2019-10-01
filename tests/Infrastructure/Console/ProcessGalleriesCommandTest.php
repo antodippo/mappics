@@ -24,7 +24,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
      */
     private $entityManager;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         self::bootKernel();
@@ -72,7 +72,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertFileNotExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_coordinates.JPG');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/good.JPG');
         unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/good.JPG');
