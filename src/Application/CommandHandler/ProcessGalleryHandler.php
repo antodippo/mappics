@@ -51,7 +51,7 @@ class ProcessGalleryHandler
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function handle(ProcessGallery $command)
+    public function handle(ProcessGallery $command): void
     {
         $galleryFileInfo = $command->getGalleryFileInfo();
         $name = basename($galleryFileInfo->getRealPath());

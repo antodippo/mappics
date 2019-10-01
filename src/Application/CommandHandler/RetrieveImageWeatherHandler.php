@@ -31,7 +31,7 @@ class RetrieveImageWeatherHandler
         $this->weatherRetriever = $weatherRetriever;
     }
 
-    public function handle(RetrieveImageWeather $retrieveImageWeather)
+    public function handle(RetrieveImageWeather $retrieveImageWeather): void
     {
         $image = $retrieveImageWeather->getImage();
         $weather = $this->weatherRetriever->retrieveImageWeather($image);

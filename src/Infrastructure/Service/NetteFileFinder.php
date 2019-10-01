@@ -21,7 +21,7 @@ class NetteFileFinder implements FileFinder
         $this->imageFilesExtensions = $imageFilesExtensions;
     }
 
-    public function findGalleries(): iterable
+    public function findGalleries(): array
     {
         $galleries = Finder::findDirectories()->in($this->galleriesPath);
 
@@ -34,7 +34,7 @@ class NetteFileFinder implements FileFinder
         return $galleriesArray;
     }
 
-    public function findImagesInPath(string $path): iterable
+    public function findImagesInPath(string $path): array
     {
         $masks = [];
         foreach ($this->imageFilesExtensions as $imageFilesExtension) {

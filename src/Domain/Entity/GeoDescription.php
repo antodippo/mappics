@@ -5,10 +5,10 @@ namespace App\Domain\Entity;
 
 class GeoDescription
 {
-    /** @var string */
+    /** @var string|null */
     public $shortDescription;
 
-    /** @var string */
+    /** @var string|null */
     public $longDescription;
 
     public function __construct(?string $shortDescription, ?string $longDescription)
