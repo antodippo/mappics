@@ -68,10 +68,10 @@ The suggested way to run and work on Mappics in a local enviroment is [Docker](h
 
 1. [install Docker](https://www.docker.com/get-started) on your machine
 2. clone the repository: `git clone git@github.com:antodippo/mappics.git`
-3. build Mappics image: `docker-compose build`
-4. run tests: `bin/run-tests`
-5. run application setup: `bin/prepare-application`
-6. run application: `docker-compose up -d`
+3. build Mappics application: `make build`
+4. run tests: `make test`
+6. run application: `make start`
 7. browse Mappics on http://localhost:8080
+8. stop application: `make stop`
 
 You should get an empty Mappics home page. To fill it, see the "Usage" paragraph.
