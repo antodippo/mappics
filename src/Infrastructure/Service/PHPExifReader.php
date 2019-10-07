@@ -21,16 +21,19 @@ class PHPExifReader implements ExifReader
         if (! is_array($gpsCoordinates)) {
             $gpsCoordinates = explode(',', (string) $gpsCoordinates);
         }
-        if (count($gpsCoordinates) <= 1) {
-            throw new MissingGeoCoordinatesException();
+        if (count($gpsCoordinates) > 1) {
+            $latitude = (float) $gpsCoordinates[0];
+            $longitude = (float) $gpsCoordinates[1];
+        } else {
+            $latitude = $longitude = null;
         }
 
         $gpsAltitude = array_key_exists('GPSAltitude', $exifRawData) ?
             explode('/', (string) $exifRawData['GPSAltitude']) : null;
 
         return new ExifData(
-            (float) $gpsCoordinates[0],
-            (float) $gpsCoordinates[1],
+            $latitude,
+            $longitude,
             $gpsAltitude ? (float) ($gpsAltitude[0] / $gpsAltitude[1]) : null,
             isset($exifRawData['Make']) ? $exifRawData['Make'] : null,
             isset($exifRawData['Model']) ? $exifRawData['Model'] : null,

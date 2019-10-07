@@ -18,33 +18,41 @@
                 <i class="far fa-calendar"></i>
                 {{ image.exifData.takenAt|date("l, d/m/y H.i")|default('~') }}<br/>
             {% endif %}
-            <i class="fas fa-map-marked-alt"></i>
-            {{ image.exifData.latitude|number_format(5) }}, {{ image.exifData.longitude|number_format(5) }}<br/>
-            {% if image.exifData.altitude is not null %}
-                <i class="fas fa-mountain"></i>
-                {{ image.exifData.altitude }} m<br/>
+
+            {% if image.hasExifGeoCoordinates %}
+                <i class="fas fa-map-marked-alt"></i>
+                {{ image.exifData.latitude|number_format(5) }}, {{ image.exifData.longitude|number_format(5) }}<br/>
+                {% if image.exifData.altitude is not null %}
+                    <i class="fas fa-mountain"></i>
+                    {{ image.exifData.altitude }} m<br/>
+                {% endif %}
             {% endif %}
+
             <i class="fas fa-camera"></i>
             {{ image.exifData.make }} {{ image.exifData.model }}<br/>
             <hr/>
 
-            <i class="fas fa-sun"></i>
-            {{ image.weather.description|default('~') }}<br/>
-            <i class="fas fa-thermometer-three-quarters"></i>
-            {{ image.weather.temperature|number_format(0)|default('~') }} °C<br/>
-            <i class="fas fa-tint"></i>
-            {{ (image.weather.humidity * 100)|default('~') }} %<br/>
-            <i class="fas fa-arrow-down"></i>
-            {{ image.weather.pressure|default('~') }} mBar<br/>
-            <i class="fas fa-wind"></i>
-            {{ image.weather.windSpeed|default('~') }} km/h<br/>
-            <br/>
-            <small>Weather powered by <a href="https://darksky.net/poweredby/" target="_blank">Dark Sky</a></small>
-            <hr/>
+            {%  if not image.weather.isUndefined %}
+                <i class="fas fa-sun"></i>
+                {{ image.weather.description|default('~') }}<br/>
+                <i class="fas fa-thermometer-three-quarters"></i>
+                {{ image.weather.temperature|number_format(0)|default('~') }} °C<br/>
+                <i class="fas fa-tint"></i>
+                {{ (image.weather.humidity * 100)|default('~') }} %<br/>
+                <i class="fas fa-arrow-down"></i>
+                {{ image.weather.pressure|default('~') }} mBar<br/>
+                <i class="fas fa-wind"></i>
+                {{ image.weather.windSpeed|default('~') }} km/h<br/>
+                <br/>
+                <small>Weather powered by <a href="https://darksky.net/poweredby/" target="_blank">Dark Sky</a></small>
+                <hr/>
+            {% endif %}
 
-            <div id="imageMap" class="img-thumbnail" data-mapboxapikey="{{ mapboxApiKey }}"
-                 data-latitude="{{ image.exifData.latitude }}" data-longitude="{{ image.exifData.longitude }}">
-            </div>
+            {% if image.hasExifGeoCoordinates %}
+                <div id="imageMap" class="img-thumbnail" data-mapboxapikey="{{ mapboxApiKey }}"
+                     data-latitude="{{ image.exifData.latitude }}" data-longitude="{{ image.exifData.longitude }}">
+                </div>
+            {% endif %}
 
         </div>
     </div>
