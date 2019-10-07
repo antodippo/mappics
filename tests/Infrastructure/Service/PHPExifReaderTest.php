@@ -44,8 +44,6 @@ class PHPExifReaderTest extends TestCase
 
     public function test_itThrowsException_withoutGPSData()
     {
-        $this->expectException('\App\Domain\Exception\MissingGeoCoordinatesException');
-
         Carbon::setTestNow(new \DateTime());
 
         $file = SplFileInfo::fromBaseSplFileInfo(

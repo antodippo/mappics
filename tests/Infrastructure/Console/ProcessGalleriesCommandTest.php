@@ -36,7 +36,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $executor->execute([]);
     }
 
-    public function test_execution()
+    public function test_execution(): void
     {
         $command = $this->application->find('mappics:process-galleries');
         $commandTester = new CommandTester($command);
@@ -46,7 +46,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertCount(2, $galleries);
 
         $images = $this->entityManager->getRepository(Image::class)->findAll();
-        $this->assertCount(2, $images);
+        $this->assertCount(3, $images);
 
         $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'good.JPG']);
         $this->assertEquals('Colosseum, Rome', $image->getDescription());
@@ -56,7 +56,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/good.JPG');
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/good.JPG');
 
-        // Images without creationdate in Exif data will not have weather info
+        // Images without creation date in Exif data will not have weather info
         $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'no_creation_date.JPG']);
         $this->assertEquals('Colosseum, Rome', $image->getDescription());
         $this->assertNull($image->getWeather());
@@ -65,11 +65,14 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/no_creation_date.JPG');
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_creation_date.JPG');
 
-        // Images without geo coordinates in Exif data will be skipped
+        // Images without geo coordinates in Exif data will not have description nor weather info
         $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'no_coordinates.JPG']);
-        $this->assertNull($image);
-        $this->assertFileNotExists(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/no_coordinates.JPG');
-        $this->assertFileNotExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_coordinates.JPG');
+        $this->assertNull($image->getDescription());
+        $this->assertNull($image->getWeather());
+        $this->assertEquals('Italy/resized/no_coordinates.JPG', $image->getResizedFilename());
+        $this->assertEquals('Italy/thumbnail/no_coordinates.JPG', $image->getThumbnailFilename());
+        $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/no_coordinates.JPG');
+        $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_coordinates.JPG');
     }
 
     public function tearDown(): void
@@ -78,6 +81,8 @@ class ProcessGalleriesCommandTest extends WebTestCase
         unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/good.JPG');
         unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/no_creation_date.JPG');
         unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_creation_date.JPG');
+        unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/resized/no_coordinates.JPG');
+        unlink(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_coordinates.JPG');
         rmdir(__DIR__ . '/DataFixtures/public/galleries/Italy/resized');
         rmdir(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail');
         rmdir(__DIR__ . '/DataFixtures/public/galleries/Italy');
