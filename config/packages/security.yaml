@@ -1,0 +1,23 @@
+security:
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    mappics-admin:
+                        password: '%env(ADMIN_PWD)%'
+                        roles: 'ROLE_ADMIN'
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            http_basic:
+                realm: Secured Area
+
+    access_control:
+        - { path: ^/mappics-admin, roles: ROLE_ADMIN }

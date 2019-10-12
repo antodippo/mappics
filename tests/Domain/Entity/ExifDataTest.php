@@ -39,4 +39,22 @@ class ExifDataTest extends TestCase
             [1, 1, true],
         ];
     }
+
+    public function test_setCoordinates()
+    {
+        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTime('2077-11-24 12:34:56'));
+        $exifData->setLatitude(12.3);
+        $exifData->setLongitude(45.6);
+
+        $this->assertEquals(12.3, $exifData->getLatitude());
+        $this->assertEquals(45.6, $exifData->getLongitude());
+    }
+
+    public function test_setTakenAt()
+    {
+        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTime('2077-11-24 12:34:56'));
+        $exifData->setTakenAt(new \DateTime('2000-01-01 01:01:01'));
+
+        $this->assertEquals(new \DateTime('2000-01-01 01:01:01'), $exifData->getTakenAt());
+    }
 }

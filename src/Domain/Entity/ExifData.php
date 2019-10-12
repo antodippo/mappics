@@ -59,6 +59,21 @@ class ExifData
         $this->takenAt = $takenAt;
     }
 
+    public function setLatitude(?float $latitude): void
+    {
+        $this->latitude = $latitude;
+    }
+
+    public function setLongitude(?float $longitude): void
+    {
+        $this->longitude = $longitude;
+    }
+
+    public function setTakenAt(?\DateTime $takenAt): void
+    {
+        $this->takenAt = $takenAt;
+    }
+
     public function getLatitude(): ?float
     {
         return (float) $this->latitude;

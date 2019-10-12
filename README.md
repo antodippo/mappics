@@ -14,6 +14,8 @@ It will process all the images placed in a specific directory and perform these 
 
 All these information are shown in galleries and pop up with photos and details, using [Leaflet](https://leafletjs.com/) javascript library and [Mapbox](https://www.mapbox.com/) maps. Frontend is based on [Bootstrap](https://getbootstrap.com) framework and backend is written in PHP on top of some [Symfony](https://symfony.com/) components.
 
+Mappics includes also a backend interface (based on [EasyAdminBundle](https://github.com/EasyCorp/EasyAdminBundle)) that lets you modify descriptions, coordinates and creation date of the photos.
+
 You can see a working version here: http://pics.antodippo.com.
 
 ## Usage
@@ -36,7 +38,9 @@ If you have a lot of images this command can take a long time, so you may want t
 
 or, if you want to set-it-and-forget-it and just upload photo every now and then, you could run it as a cron job (it has a lock which prevents multiple execution):
 
-`0 * * * * /var/www/mappics/current/bin/console mappics:process-galleries` 
+`0 * * * * /var/www/mappics/current/bin/console mappics:process-galleries`
+
+To access the admin backend you must set the `ADMIN_PWD` variable in the `/.env` file, and then access it from `www.your-domain.com/mappics-admin`.
 
 ## Deploy
 

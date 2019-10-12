@@ -10,6 +10,6 @@ services:
     ports:
       - 8080:80
     volumes:
-      - .:/var/www/mappics
+      - .:/var/www/mappics:delegated
     environment:
       AM_I_INSIDE_DOCKER: "true"
