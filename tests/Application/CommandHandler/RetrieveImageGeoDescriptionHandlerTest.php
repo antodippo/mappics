@@ -40,7 +40,7 @@ class RetrieveImageGeoDescriptionHandlerTest extends TestCase
         $retrieveImageGeoDescriptionHandler->handle($command);
 
         \Phake::verify($this->geoInfoRetriever, \Phake::times(1))->retrieveImageGeoInfo($image);
-        \Phake::verify($image, \Phake::times(1))->updateDescription($geoDescription);
+        \Phake::verify($image, \Phake::times(1))->updateGeoDescription($geoDescription);
         \Phake::verify($this->imageRepository)->add($image);
     }
 }

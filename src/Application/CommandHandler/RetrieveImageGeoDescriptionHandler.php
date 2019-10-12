@@ -35,7 +35,7 @@ class RetrieveImageGeoDescriptionHandler
     {
         $image = $retrieveImageGeoDescription->getImage();
         $geoDescription = $this->geoInfoRetriever->retrieveImageGeoInfo($image);
-        $image->updateDescription($geoDescription);
+        $image->updateGeoDescription($geoDescription);
         $this->imageRepository->add($image);
     }
 }

@@ -52,7 +52,7 @@ class Image
         $this->thumbnailFilename = $thumbnailFilename;
     }
 
-    public function updateDescription(GeoDescription $geoDescription): void
+    public function updateGeoDescription(GeoDescription $geoDescription): void
     {
         $this->description = (string) $geoDescription->shortDescription;
         $this->longDescription = (string) $geoDescription->longDescription;
@@ -61,6 +61,16 @@ class Image
     public function recordWeather(Weather $weather): void
     {
         $this->weather = $weather;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function setLongDescription(string $longDescription): void
+    {
+        $this->longDescription = $longDescription;
     }
 
     public function getId(): string
@@ -86,6 +96,11 @@ class Image
     public function getGallery(): Gallery
     {
         return $this->gallery;
+    }
+
+    public function getGalleryName(): string
+    {
+        return $this->gallery->getName();
     }
 
     public function getDescription(): ?string

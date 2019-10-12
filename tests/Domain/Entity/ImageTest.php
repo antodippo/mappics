@@ -57,7 +57,7 @@ class ImageTest extends TestCase
             new Gallery('gallery-id', 'path-to-gallery', 'Gallery', 'gallery'),
             new ExifData($latitude, $longitude, null, null, null, null, null, null, null, null)
         );
-        $image->updateDescription(new GeoDescription($shortDescription, $longDescription));
+        $image->updateGeoDescription(new GeoDescription($shortDescription, $longDescription));
 
         $this->assertEquals($image->needsDescriptionUpdate(), $expectedResult);
     }
@@ -132,5 +132,20 @@ class ImageTest extends TestCase
             [ 1.0, null, false ],
             [ null, null, false ]
         ];
+    }
+
+    public function test_setDescriptions()
+    {
+        $image = new Image(
+            'image-id',
+            'image-filename',
+            new Gallery('gallery-id', 'path-to-gallery', 'Gallery', 'gallery'),
+            new ExifData(12, 34, null, null, null, null, null, null, null, null)
+        );
+        $image->setDescription('New description');
+        $image->setLongDescription('New long description');
+
+        $this->assertEquals('New description', $image->getDescription());
+        $this->assertEquals('New long description', $image->getLongDescription());
     }
 }

@@ -1,0 +1,57 @@
+easy_admin:
+    site_name: '<img src="../images/logo.png" />'
+    list:
+        max_results: 30
+    design:
+        menu:
+            - { entity: 'Gallery', label: 'Galleries', icon: 'images' }
+            - { entity: 'Image', label: 'Images', icon: 'image' }
+    entities:
+        Gallery:
+            class: App\Domain\Entity\Gallery
+            label: 'Galleries'
+            disabled_actions: ['edit', 'new']
+            list:
+                fields:
+                    - 'name'
+                    - 'slug'
+                    - 'path'
+                    - 'images'
+                    - 'createdAt'
+                sort: 'createdAt'
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Details' }
+                    - { name: 'delete', icon: 'trash-alt', label: 'Delete' }
+                batch_actions: ['delete']
+            show:
+                fields:
+                    - 'id'
+                    - 'path'
+                    - 'name'
+                    - 'slug'
+                    - 'createdAt'
+        Image:
+            class: App\Domain\Entity\Image
+            label: 'Images'
+            disabled_actions: ['new']
+            list:
+                fields:
+                    - { property: 'thumbnailFilename', type: 'image', base_path: '../galleries/', label: 'Image' }
+                    - 'filename'
+                    - 'description'
+                    - 'longDescription'
+                    - { property: 'galleryName', label: 'Gallery' }
+                    - 'createdAt'
+                sort: 'createdAt'
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Details' }
+                    - { name: 'edit', icon: 'edit', label: 'Edit' }
+                    - { name: 'delete', icon: 'trash-alt', label: 'Delete' }
+                batch_actions: ['delete']
+            edit:
+                fields:
+                    - { property: 'description', type: 'text', type_options: { empty_data: '' } }
+                    - { property: 'longDescription', type: 'text', type_options: { empty_data: '' } }
+                    - 'exifData.latitude'
+                    - 'exifData.longitude'
+                    - 'exifData.takenAt'
