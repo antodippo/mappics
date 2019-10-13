@@ -47,7 +47,7 @@ phpunit:
 	$(.RUN) vendor/bin/phpunit
 
 phpunit-coverage:
-	$(.RUN) vendor/bin/phpunit --coverage-html=var/coverage
+	$(.RUN) vendor/bin/phpunit --coverage-html=var/coverage --coverage-text
 
 phpstan:
 	$(.RUN) vendor/bin/phpstan analyse --level=max src/
