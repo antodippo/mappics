@@ -27,7 +27,7 @@ class DarkSkyWeatherRetriever implements WeatherRetriever
 
     public function retrieveImageWeather(Image $image): Weather
     {
-        $timestamp = $image->getExifData()->getTakenAt() instanceof \DateTime ?
+        $timestamp = $image->getExifData()->getTakenAt() instanceof \DateTimeInterface ?
             $image->getExifData()->getTakenAt()->getTimestamp() : null;
 
         $url = self::DARKSKY_ENDPOINT .

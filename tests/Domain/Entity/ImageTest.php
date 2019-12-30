@@ -7,7 +7,7 @@ use App\Domain\Entity\Gallery;
 use App\Domain\Entity\Image;
 use App\Domain\Entity\Weather;
 use App\Domain\Entity\GeoDescription;
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 
 class ImageTest extends TestCase
@@ -80,7 +80,7 @@ class ImageTest extends TestCase
         ?Weather $weather,
         ?float $latitude,
         ?float $longitude,
-        ?\DateTime $takenAt,
+        ?\DateTimeImmutable $takenAt,
         bool $expectedResult
     ) {
         $image = new Image(
@@ -99,9 +99,9 @@ class ImageTest extends TestCase
     public function getWeatherInfo()
     {
         return [
-            [ new Weather('some-weather', null, null, null, null), 1.0, 1.0, new Carbon(), false ],
-            [ null, 1.0, 1.0, new Carbon(), true ],
-            [ null, null, null, new Carbon(), false ],
+            [ new Weather('some-weather', null, null, null, null), 1.0, 1.0, new CarbonImmutable(), false ],
+            [ null, 1.0, 1.0, new CarbonImmutable(), true ],
+            [ null, null, null, new CarbonImmutable(), false ],
             [ null, 1.0, 1.0, null, false ]
         ];
     }

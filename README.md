@@ -72,7 +72,7 @@ The suggested way to run and work on Mappics in a local enviroment is [Docker](h
 
 1. [install Docker](https://www.docker.com/get-started) on your machine
 2. clone the repository: `git clone git@github.com:antodippo/mappics.git`
-3. build Mappics application: `make build`
+3. build Mappics application: `make setup`
 4. run tests: `make test`
 6. run application: `make start`
 7. browse Mappics on http://localhost:8080

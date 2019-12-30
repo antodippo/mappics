@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0c4819a11952b7bda8ddd3160d9c421",
+    "content-hash": "69ef34acc279550a36816f8d6c8a93c9",
     "packages": [
+        {
+            "name": "antodippo/exif-reader",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antodippo/exif-reader.git",
+                "reference": "ce8b4c6153c43c7bb42ef5adffbeec1cfa3189c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antodippo/exif-reader/zipball/ce8b4c6153c43c7bb42ef5adffbeec1cfa3189c1",
+                "reference": "ce8b4c6153c43c7bb42ef5adffbeec1cfa3189c1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-exif": "*",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "giorgiosironi/eris": "^0.11.0",
+                "infection/infection": "^0.14.2",
+                "phpunit/phpunit": "^8.4",
+                "vimeo/psalm": "^3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ExifReader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonello D'Ippolito",
+                    "email": "antonellodippolito@gmail.com",
+                    "homepage": "http://antodippo.com"
+                }
+            ],
+            "description": "A simple, straightforward and fully typed, Exif reader library",
+            "keywords": [
+                "exif",
+                "images"
+            ],
+            "time": "2020-01-11T17:36:22+00:00"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.2.5",
@@ -6718,6 +6766,7 @@
                 "code",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2019-12-10T19:21:15+00:00"
         },
         {
@@ -6772,6 +6821,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],

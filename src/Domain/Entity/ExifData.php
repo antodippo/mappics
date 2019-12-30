@@ -32,7 +32,7 @@ class ExifData
     /** @var string|null */
     private $ISO;
 
-    /** @var \DateTime|null */
+    /** @var \DateTimeImmutable|null */
     private $takenAt;
 
     public function __construct(
@@ -45,7 +45,7 @@ class ExifData
         ?string $aperture,
         ?string $focalLength,
         ?string $ISO,
-        ?\DateTime $takenAt
+        ?\DateTimeImmutable $takenAt
     ) {
         $this->latitude = $latitude;
         $this->longitude = $longitude;
@@ -69,7 +69,7 @@ class ExifData
         $this->longitude = $longitude;
     }
 
-    public function setTakenAt(?\DateTime $takenAt): void
+    public function setTakenAt(?\DateTimeImmutable $takenAt): void
     {
         $this->takenAt = $takenAt;
     }
@@ -99,7 +99,7 @@ class ExifData
         return $this->model;
     }
 
-    public function getTakenAt(): ?\DateTime
+    public function getTakenAt(): ?\DateTimeImmutable
     {
         return $this->takenAt;
     }

@@ -1,4 +1,7 @@
 {
+    "antodippo/exif-reader": {
+        "version": "0.1.0"
+    },
     "composer/ca-bundle": {
         "version": "1.1.4"
     },

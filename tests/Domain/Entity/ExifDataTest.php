@@ -9,14 +9,14 @@ class ExifDataTest extends TestCase
 {
     public function test_itReturnsCorrectValues(): void
     {
-        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTime('2077-11-24 12:34:56'));
+        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTimeImmutable('2077-11-24 12:34:56'));
 
         $this->assertEquals(1.0, $exifData->getLatitude());
         $this->assertEquals(2.0, $exifData->getLongitude());
         $this->assertEquals(3.0, $exifData->getAltitude());
         $this->assertEquals('test-make', $exifData->getMake());
         $this->assertEquals('test-model', $exifData->getModel());
-        $this->assertEquals(new \DateTime('2077-11-24 12:34:56'), $exifData->getTakenAt());
+        $this->assertEquals(new \DateTimeImmutable('2077-11-24 12:34:56'), $exifData->getTakenAt());
         $this->assertTrue($exifData->hasGeoCoordinates());
     }
 
@@ -42,7 +42,7 @@ class ExifDataTest extends TestCase
 
     public function test_setCoordinates()
     {
-        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTime('2077-11-24 12:34:56'));
+        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTimeImmutable('2077-11-24 12:34:56'));
         $exifData->setLatitude(12.3);
         $exifData->setLongitude(45.6);
 
@@ -52,9 +52,9 @@ class ExifDataTest extends TestCase
 
     public function test_setTakenAt()
     {
-        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTime('2077-11-24 12:34:56'));
-        $exifData->setTakenAt(new \DateTime('2000-01-01 01:01:01'));
+        $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTimeImmutable('2077-11-24 12:34:56'));
+        $exifData->setTakenAt(new \DateTimeImmutable('2000-01-01 01:01:01'));
 
-        $this->assertEquals(new \DateTime('2000-01-01 01:01:01'), $exifData->getTakenAt());
+        $this->assertEquals(new \DateTimeImmutable('2000-01-01 01:01:01'), $exifData->getTakenAt());
     }
 }
