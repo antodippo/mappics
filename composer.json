@@ -10,6 +10,7 @@
         "ext-mbstring": "*",
         "ext-zip": "*",
         "ext-zlib": "*",
+        "antodippo/exif-reader": "^0.1.0",
         "easycorp/easyadmin-bundle": "^2.3",
         "gumlet/php-image-resize": "^1.9",
         "guzzlehttp/guzzle": "^6.3",

@@ -48,7 +48,8 @@ class ProcessImagesSubscriber implements EventSubscriberInterface
             } catch (\Exception $e) {
                 $this->logger->error(
                     'Exception processing image ' . $imageFileInfo->getFilename() .
-                    ' of gallery ' . $gallery->getName() . ': ' . $e->getMessage()
+                    ' of gallery ' . $gallery->getName() . ': ' . $e->getMessage(),
+                    $e->getTrace()
                 );
             }
         }

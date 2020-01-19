@@ -52,6 +52,8 @@ services:
             $galleriesPath: '%galleries_path%'
             $publicGalleriesPath: '%public_galleries_path%'
 
+    ExifReader\Reader: ~
+
     GuzzleHttp\Client: ~
     GuzzleHttp\ClientInterface: '@GuzzleHttp\Client'
 

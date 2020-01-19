@@ -29,5 +29,5 @@ App\Domain\Entity\ExifData:
             type: string
             nullable: true
         takenAt:
-            type: datetime
+            type: datetime_immutable
             nullable: true

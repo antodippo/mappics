@@ -28,7 +28,7 @@ class DarkSkyWeatherRetrieverTest extends TestCase
         $exifData = \Phake::mock(ExifData::class);
         \Phake::when($exifData)->getLatitude()->thenReturn('111');
         \Phake::when($exifData)->getLongitude()->thenReturn('222');
-        \Phake::when($exifData)->getTakenAt()->thenReturn(new \DateTime('2018-01-01 00:00:00'));
+        \Phake::when($exifData)->getTakenAt()->thenReturn(new \DateTimeImmutable('2018-01-01 00:00:00'));
 
         $image = \Phake::mock(Image::class);
         \Phake::when($image)->getExifData()->thenReturn($exifData);
@@ -77,7 +77,7 @@ class DarkSkyWeatherRetrieverTest extends TestCase
         $exifData = \Phake::mock(ExifData::class);
         \Phake::when($exifData)->getLatitude()->thenReturn('111');
         \Phake::when($exifData)->getLongitude()->thenReturn('222');
-        \Phake::when($exifData)->getTakenAt()->thenReturn(new \DateTime('2018-01-01 00:00:00'));
+        \Phake::when($exifData)->getTakenAt()->thenReturn(new \DateTimeImmutable('2018-01-01 00:00:00'));
 
         $image = \Phake::mock(Image::class);
         \Phake::when($image)->getExifData()->thenReturn($exifData);
