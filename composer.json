@@ -17,7 +17,6 @@
         "javiereguiluz/easyslugger": "^1.0",
         "league/tactician": "^1.0",
         "league/tactician-bundle": "^1.1",
-        "miljar/php-exif": "^0.6.3",
         "nesbot/carbon": "^2.11",
         "nette/finder": "^2.4",
         "phake/phake": "^3.0",

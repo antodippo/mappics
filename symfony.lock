@@ -144,9 +144,6 @@
     "league/tactician-logger": {
         "version": "v0.10.0"
     },
-    "miljar/php-exif": {
-        "version": "v0.6.3"
-    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
