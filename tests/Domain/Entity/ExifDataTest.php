@@ -11,11 +11,15 @@ class ExifDataTest extends TestCase
     {
         $exifData = new ExifData(1, 2, 3, 'test-make', 'test-model', 4, 5, 6, 7, new \DateTimeImmutable('2077-11-24 12:34:56'));
 
-        $this->assertEquals(1.0, $exifData->getLatitude());
-        $this->assertEquals(2.0, $exifData->getLongitude());
-        $this->assertEquals(3.0, $exifData->getAltitude());
-        $this->assertEquals('test-make', $exifData->getMake());
-        $this->assertEquals('test-model', $exifData->getModel());
+        $this->assertSame(1.0, $exifData->getLatitude());
+        $this->assertSame(2.0, $exifData->getLongitude());
+        $this->assertSame(3.0, $exifData->getAltitude());
+        $this->assertSame('test-make', $exifData->getMake());
+        $this->assertSame('test-model', $exifData->getModel());
+        $this->assertSame('4', $exifData->getExposure());
+        $this->assertSame('5', $exifData->getAperture());
+        $this->assertSame('6', $exifData->getFocalLength());
+        $this->assertSame('7', $exifData->getISO());
         $this->assertEquals(new \DateTimeImmutable('2077-11-24 12:34:56'), $exifData->getTakenAt());
         $this->assertTrue($exifData->hasGeoCoordinates());
     }
