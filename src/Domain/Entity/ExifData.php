@@ -104,6 +104,26 @@ class ExifData
         return $this->takenAt;
     }
 
+    public function getExposure(): ?string
+    {
+        return $this->exposure;
+    }
+
+    public function getAperture(): ?string
+    {
+        return $this->aperture;
+    }
+
+    public function getFocalLength(): ?string
+    {
+        return $this->focalLength;
+    }
+
+    public function getISO(): ?string
+    {
+        return $this->ISO;
+    }
+
     public function hasGeoCoordinates(): bool
     {
         return !is_null($this->longitude) && !is_null($this->latitude);

@@ -27,9 +27,14 @@
                     {{ image.exifData.altitude }} m<br/>
                 {% endif %}
             {% endif %}
+            <hr/>
 
             <i class="fas fa-camera"></i>
-            {{ image.exifData.make }} {{ image.exifData.model }}<br/>
+            <b>{{ image.exifData.make }} {{ image.exifData.model }}</b><br/>
+            <b>Exposure</b> {{ image.exifData.exposure|round(2,'ceil')|default('~') }}<br/>
+            <b>Aperture</b> {{ image.exifData.aperture|default('~') }}<br/>
+            <b>Focal length</b> {{ image.exifData.focalLength|default('~') }}<br/>
+            <b>ISO</b> {{ image.exifData.ISO|default('~') }}<br/>
             <hr/>
 
             {%  if not image.weather.isUndefined %}
