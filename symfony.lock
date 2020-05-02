@@ -126,6 +126,9 @@
     "justinrainbow/json-schema": {
         "version": "5.2.8"
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.3"
+    },
     "league/tactician": {
         "version": "v1.0.3"
     },
@@ -202,7 +205,7 @@
         "version": "2.0.1"
     },
     "php": {
-        "version": "7.2"
+        "version": "7.4"
     },
     "php-coveralls/php-coveralls": {
         "version": "v1.1.0"
@@ -576,6 +579,9 @@
     },
     "twig/twig": {
         "version": "v2.4.4"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.0.1"
     },
     "webmozart/assert": {
         "version": "1.4.0"
