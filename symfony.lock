@@ -83,6 +83,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.1"
+    },
     "easycorp/easyadmin-bundle": {
         "version": "2.0",
         "recipe": {
@@ -116,9 +119,6 @@
     },
     "javiereguiluz/easyslugger": {
         "version": "v1.0.0"
-    },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
     },
     "jean85/pretty-package-versions": {
         "version": "1.2"
@@ -396,14 +396,14 @@
             "ref": "70e6c7b1c83d975cf1ca40f9685feeb009d70792"
         }
     },
+    "symfony/http-client-contracts": {
+        "version": "v2.3.1"
+    },
     "symfony/http-foundation": {
         "version": "v4.0.2"
     },
     "symfony/http-kernel": {
         "version": "v4.0.2"
-    },
-    "symfony/inflector": {
-        "version": "v4.3.5"
     },
     "symfony/intl": {
         "version": "v4.3.5"
@@ -435,6 +435,9 @@
     "symfony/polyfill-ctype": {
         "version": "v1.8.0"
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.20.0"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.12.0"
     },
@@ -458,6 +461,9 @@
     },
     "symfony/property-access": {
         "version": "v4.3.5"
+    },
+    "symfony/property-info": {
+        "version": "v5.1.8"
     },
     "symfony/requirements-checker": {
         "version": "1.0",
@@ -506,6 +512,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.0.2"
+    },
+    "symfony/string": {
+        "version": "v5.1.8"
     },
     "symfony/translation": {
         "version": "3.3",
