@@ -1,0 +1,42 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build containers
+        run:  docker-compose build
+
+      - name: Install dependencies
+        run:  docker-compose run --rm mappics composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Clear cache
+        run:  docker-compose run --rm mappics bin/console cache:clear --env=test
+
+      - name: Migrations
+        run:  docker-compose run --rm mappics bin/console doctrine:migrations:migrate --env=test --no-interaction
+
+      - name: Create logs directory
+        run:  mkdir -p build/logs
+
+      - name: PHPStan
+        run:  docker-compose run --rm mappics vendor/bin/phpstan analyse --level=max src/
+
+      - name: PHPUnit
+        run:  docker-compose run --rm mappics vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text
+
+      - name: Infection
+        run:  docker-compose run --rm mappics vendor/bin/infection --min-msi=70 --threads=4
+
+      - name: Send coverage
+        run:  bash <(curl -s https://codecov.io/bash)
