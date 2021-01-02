@@ -19,5 +19,7 @@ interface ImageRepository
      */
     public function findByFilenameAndGallery(string $filename, Gallery $gallery): Image;
 
+    public function findAll(): array;
+
     public function add(Image $image): void;
 }

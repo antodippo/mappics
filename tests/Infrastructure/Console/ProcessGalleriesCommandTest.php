@@ -2,8 +2,6 @@
 
 namespace App\Tests\Infrastructure\Console;
 
-use App\Domain\Entity\Gallery;
-use App\Domain\Entity\Image;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManager;
@@ -42,13 +40,14 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute([]);
 
-        $galleries = $this->entityManager->getRepository(Gallery::class)->findAll();
-        $this->assertCount(2, $galleries);
+        $galleryRepository = $this->application->getKernel()->getContainer()->get('App\Domain\Repository\GalleryRepository');
+        $this->assertCount(2, $galleryRepository->findAll());
 
-        $images = $this->entityManager->getRepository(Image::class)->findAll();
-        $this->assertCount(3, $images);
+        $imageRepository = $this->application->getKernel()->getContainer()->get('App\Domain\Repository\ImageRepository');
+        $this->assertCount(3, $imageRepository->findAll());
 
-        $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'good.JPG']);
+        $gallery = $galleryRepository->findByName('Italy');
+        $image = $imageRepository->findByFilenameAndGallery('good.JPG', $gallery);
         $this->assertEquals('Colosseum, Rome', $image->getDescription());
         $this->assertEquals('Sunny day!', $image->getWeather()->getDescription());
         $this->assertEquals('Italy/resized/good.JPG', $image->getResizedFilename());
@@ -57,7 +56,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/good.JPG');
 
         // Images without creation date in Exif data will not have weather info
-        $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'no_creation_date.JPG']);
+        $image = $imageRepository->findByFilenameAndGallery('no_creation_date.JPG', $gallery);
         $this->assertEquals('Colosseum, Rome', $image->getDescription());
         $this->assertNull($image->getWeather());
         $this->assertEquals('Italy/resized/no_creation_date.JPG', $image->getResizedFilename());
@@ -66,7 +65,7 @@ class ProcessGalleriesCommandTest extends WebTestCase
         $this->assertFileExists(__DIR__ . '/DataFixtures/public/galleries/Italy/thumbnail/no_creation_date.JPG');
 
         // Images without geo coordinates in Exif data will not have description nor weather info
-        $image = $this->entityManager->getRepository(Image::class)->findOneBy(['filename' => 'no_coordinates.JPG']);
+        $image = $imageRepository->findByFilenameAndGallery('no_coordinates.JPG', $gallery);
         $this->assertNull($image->getDescription());
         $this->assertNull($image->getWeather());
         $this->assertEquals('Italy/resized/no_coordinates.JPG', $image->getResizedFilename());

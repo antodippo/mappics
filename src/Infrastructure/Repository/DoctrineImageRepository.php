@@ -43,6 +43,13 @@ class DoctrineImageRepository implements ImageRepository
         return $image;
     }
 
+    public function findAll(): array
+    {
+        return $this->em
+            ->getRepository('App\Domain\Entity\Image')
+            ->findBy([], ['name' => 'ASC']);
+    }
+
     public function add(Image $image): void
     {
         $this->em->persist($image);

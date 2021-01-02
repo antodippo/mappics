@@ -7,7 +7,14 @@ services:
         public: true
 
     App\Tests\Infrastructure\Service\StubGeoInfoRetriever: ~
-    App\Tests\Infrastructure\Service\StubWeatherRetriever: ~
-
     App\Application\Service\GeoInfoRetriever: '@App\Tests\Infrastructure\Service\StubGeoInfoRetriever'
+
+    App\Tests\Infrastructure\Service\StubWeatherRetriever: ~
     App\Application\Service\WeatherRetriever: '@App\Tests\Infrastructure\Service\StubWeatherRetriever'
+
+    App\Infrastructure\Repository\InMemoryGalleryRepository: ~
+    App\Domain\Repository\GalleryRepository: '@App\Infrastructure\Repository\InMemoryGalleryRepository'
+
+    App\Infrastructure\Repository\InMemoryImageRepository: ~
+    App\Domain\Repository\ImageRepository: '@App\Infrastructure\Repository\InMemoryImageRepository'
+
