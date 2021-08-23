@@ -1,0 +1,122 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: src/Application/CommandHandler/ProcessImageHandler.php
+
+		-
+			message: "#^Method App\\\\Application\\\\Service\\\\FileFinder\\:\\:findGalleries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Application/Service/FileFinder.php
+
+		-
+			message: "#^Method App\\\\Application\\\\Service\\\\FileFinder\\:\\:findImagesInPath\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Application/Service/FileFinder.php
+
+		-
+			message: "#^Call to an undefined method Traversable\\<\\(int\\|string\\), mixed\\>\\:\\:uasort\\(\\)\\.$#"
+			count: 1
+			path: src/Domain/Entity/Gallery.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Entity\\\\Gallery\\:\\:addImage\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Entity/Gallery.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Entity\\\\Gallery\\:\\:getImages\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
+			count: 1
+			path: src/Domain/Entity/Gallery.php
+
+		-
+			message: "#^Property App\\\\Domain\\\\Entity\\\\Gallery\\:\\:\\$images with generic class Doctrine\\\\Common\\\\Collections\\\\ArrayCollection does not specify its types\\: TKey, T$#"
+			count: 1
+			path: src/Domain/Entity/Gallery.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Entity\\\\Image\\:\\:updateResizedImagesFilename\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Entity/Image.php
+
+		-
+			message: "#^Property App\\\\Domain\\\\Exception\\\\GalleryNotFoundException\\:\\:\\$code has no typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Exception/GalleryNotFoundException.php
+
+		-
+			message: "#^Property App\\\\Domain\\\\Exception\\\\GalleryNotFoundException\\:\\:\\$message has no typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Exception/GalleryNotFoundException.php
+
+		-
+			message: "#^Property App\\\\Domain\\\\Exception\\\\ImageNotFoundException\\:\\:\\$code has no typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Exception/ImageNotFoundException.php
+
+		-
+			message: "#^Property App\\\\Domain\\\\Exception\\\\ImageNotFoundException\\:\\:\\$message has no typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Exception/ImageNotFoundException.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Repository\\\\GalleryRepository\\:\\:add\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Domain/Repository/GalleryRepository.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Repository\\\\GalleryRepository\\:\\:findAll\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Domain/Repository/GalleryRepository.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Console\\\\ProcessGalleriesCommand\\:\\:execute\\(\\) should return int but return statement is missing\\.$#"
+			count: 1
+			path: src/Infrastructure/Console/ProcessGalleriesCommand.php
+
+		-
+			message: "#^Property App\\\\Infrastructure\\\\Console\\\\ProgressBarHelper\\:\\:\\$singleGalleryProgressBars type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Console/ProgressBarHelper.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Repository\\\\DoctrineGalleryRepository\\:\\:add\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Infrastructure/Repository/DoctrineGalleryRepository.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Repository\\\\DoctrineGalleryRepository\\:\\:findAll\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Repository/DoctrineGalleryRepository.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Service\\\\NetteFileFinder\\:\\:__construct\\(\\) has parameter \\$imageFilesExtensions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Service/NetteFileFinder.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Service\\\\NetteFileFinder\\:\\:findGalleries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Service/NetteFileFinder.php
+
+		-
+			message: "#^Method App\\\\Infrastructure\\\\Service\\\\NetteFileFinder\\:\\:findImagesInPath\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Service/NetteFileFinder.php
+
+		-
+			message: "#^Property App\\\\Infrastructure\\\\Service\\\\NetteFileFinder\\:\\:\\$imageFilesExtensions type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Infrastructure/Service/NetteFileFinder.php
+
+		-
+			message: "#^Method App\\\\Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method App\\\\Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
