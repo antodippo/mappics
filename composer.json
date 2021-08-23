@@ -71,8 +71,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
-            "requirements-checker": "script",
-            "security-checker security:check": "script"
+            "requirements-checker": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"
