@@ -32,6 +32,9 @@
     "doctrine/dbal": {
         "version": "v2.6.3"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "1.6",
         "recipe": {
@@ -99,6 +102,9 @@
             "config/routes/easy_admin.yaml"
         ]
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
+    },
     "gumlet/php-image-resize": {
         "version": "1.9.2"
     },
@@ -119,9 +125,6 @@
     },
     "javiereguiluz/easyslugger": {
         "version": "v1.0.0"
-    },
-    "jean85/pretty-package-versions": {
-        "version": "1.2"
     },
     "justinrainbow/json-schema": {
         "version": "5.2.8"
@@ -156,26 +159,8 @@
     "nesbot/carbon": {
         "version": "2.11.0"
     },
-    "nette/bootstrap": {
-        "version": "v3.0.0"
-    },
-    "nette/di": {
-        "version": "v3.0.1"
-    },
     "nette/finder": {
         "version": "v2.4.1"
-    },
-    "nette/neon": {
-        "version": "v3.0.0"
-    },
-    "nette/php-generator": {
-        "version": "v3.2.3"
-    },
-    "nette/robot-loader": {
-        "version": "v3.2.0"
-    },
-    "nette/schema": {
-        "version": "v1.0.0"
     },
     "nette/utils": {
         "version": "v2.4.8"
@@ -222,11 +207,8 @@
     "phpspec/prophecy": {
         "version": "1.8.1"
     },
-    "phpstan/phpdoc-parser": {
-        "version": "0.3.5"
-    },
     "phpstan/phpstan": {
-        "version": "0.11.16"
+        "version": "0.12.96"
     },
     "phpunit/php-code-coverage": {
         "version": "7.0.8"
@@ -452,6 +434,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.12.0"
+    },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
     },
     "symfony/process": {
         "version": "v4.0.2"

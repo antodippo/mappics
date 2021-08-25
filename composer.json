@@ -41,7 +41,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "infection/infection": "^0.14.1",
         "php-coveralls/php-coveralls": "^1.0",
-        "phpstan/phpstan": "^0.11.16",
+        "phpstan/phpstan": "^0.12.96",
         "phpunit/phpunit": "^8.3",
         "symfony/profiler-pack": "^1.0"
     },
@@ -71,8 +71,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
-            "requirements-checker": "script",
-            "security-checker security:check": "script"
+            "requirements-checker": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"
