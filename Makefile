@@ -47,13 +47,13 @@ phpunit:
 	$(.RUN) vendor/bin/phpunit
 
 phpunit-coverage:
-	$(.RUN) vendor/bin/phpunit --coverage-html=var/coverage --coverage-text
+	$(.RUN) php -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html=var/coverage --coverage-text
 
 phpstan:
 	$(.RUN) vendor/bin/phpstan analyse --level=max src/ -c phpstan-baseline.neon
 
 infection:
-	$(.RUN) vendor/bin/infection --threads=4
+	$(.RUN) vendor/bin/infection --threads=4 --min-msi=74 --initial-tests-php-options='-dxdebug.mode=coverage'
 
 shell:
 	$(.DOCKER_RUN_PHP) bash

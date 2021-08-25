@@ -36,7 +36,7 @@ jobs:
         run:  docker-compose run --rm mappics php -dxdebug.mode=coverage vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text
 
       - name: Infection
-        run:  docker-compose run --rm mappics vendor/bin/infection --min-msi=70 --threads=4
+        run:  docker-compose run --rm mappics vendor/bin/infection --min-msi=74 --threads=4 --initial-tests-php-options='-dxdebug.mode=coverage'
 
       - name: Send coverage
         run:  bash <(curl -s https://codecov.io/bash)
