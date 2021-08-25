@@ -50,7 +50,7 @@ phpunit-coverage:
 	$(.RUN) vendor/bin/phpunit --coverage-html=var/coverage --coverage-text
 
 phpstan:
-	$(.RUN) vendor/bin/phpstan analyse --level=max src/
+	$(.RUN) vendor/bin/phpstan analyse --level=max src/ -c phpstan-baseline.neon
 
 infection:
 	$(.RUN) vendor/bin/infection --threads=4
