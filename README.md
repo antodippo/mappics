@@ -1,5 +1,10 @@
 # Mappics
 
+| :warning: WARNING           |
+|:----------------------------|
+| Archived, and replaced by [https://github.com/antodippo/mappics-v3](https://github.com/antodippo/mappics-v3)     |
+
+
 [![Build Status](https://travis-ci.org/antodippo/mappics.svg?branch=master)](https://travis-ci.org/antodippo/mappics)
 [![codecov](https://codecov.io/gh/antodippo/mappics/branch/master/graph/badge.svg)](https://codecov.io/gh/antodippo/mappics)
 
